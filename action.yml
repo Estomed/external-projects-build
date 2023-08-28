@@ -1,0 +1,29 @@
+name: 'External project branch build'
+description: 'External project branch build'
+inputs:
+  token:
+    description: 'Token'
+    required: true
+    default: ''
+  branch:
+    description: 'Current branch'
+    required: true
+    default: ''
+  owner:
+    description: 'Owner repo'
+    required: true
+    default: ''
+  external-repo-name:
+    description: 'External repo name to cascade merge'
+    required: true
+    default: ''
+  external-repo-branch-prefix:
+    description: 'Extarnal repo branch prefix to cascade merge'
+    required: true
+    default: ''
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'node16'
+  main: 'index.js'
