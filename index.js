@@ -139,37 +139,37 @@ async function run() {
           );
         }
 
-        branchOnExternalRepo = await octokit.repos.getBranch({
+        /*branchOnExternalRepo = await octokit.repos.getBranch({
           owner: repoOwner,
           repo: externalRepoName,
           branch: branchName,
-        });
+        });*/
       }
     }
     try {
       if (branchOnExternalRepo && branchOnExternalRepo.status == 200) {
 				
-        const currentCommit = await octokit.git.getCommit({
+        /*const currentCommit = await octokit.git.getCommit({
           owner: repoOwner,
           repo: externalRepoName,
           ref: `heads/${branchOnExternalRepo.data.name}`,
 					commit_sha: branchOnExternalRepo.data.commit.sha
-        });
+        });*/
 
-        const newCommit = await octokit.git.createCommit({
+        /*const newCommit = await octokit.git.createCommit({
           owner: repoOwner,
           repo: externalRepoName,
           message: "Automatic empty commit to trigger build",
           tree: currentCommit.data.tree.sha,
           parents: [currentCommit.data.sha],
-        });
+        });*/
 			
-        await octokit.git.updateRef({
+        /*await octokit.git.updateRef({
           owner: repoOwner,
           repo: externalRepoName,
           ref: `heads/${branchName}`,
           sha: newCommit.data.sha,
-        });
+        });*/
       }
     } catch (error) {
       console.log(JSON.stringify(error));
